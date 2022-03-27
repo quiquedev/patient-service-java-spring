@@ -1,4 +1,4 @@
-package info.quiquedev.patientsservice.patients.usecases.repository;
+package info.quiquedev.patientsservice.patients.usecases;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
