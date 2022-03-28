@@ -14,7 +14,7 @@ import javax.persistence.Version;
 import java.time.Instant;
 import java.util.Objects;
 
-public interface PatientsRepository extends JpaRepository<Patient, String> {
+interface PatientsRepository extends JpaRepository<Patient, String> {
   boolean existsPatientByPassportNumber(String passportNumber);
 }
 
