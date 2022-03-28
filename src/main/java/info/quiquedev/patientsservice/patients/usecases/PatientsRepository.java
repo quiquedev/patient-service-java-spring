@@ -10,12 +10,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Version;
 import java.time.Instant;
 import java.util.Objects;
-import java.util.Optional;
 
 public interface PatientsRepository extends JpaRepository<Patient, String> {
-  Optional<Patient> findByPassportNumber(String passportNumber);
+  boolean existsPatientByPassportNumber(String passportNumber);
 }
 
 @Entity
@@ -39,6 +39,9 @@ class Patient {
 
   @Column(nullable = false)
   private Instant createdAt;
+
+  @Version
+  private int version;
 
   @Override
   public boolean equals(final Object o) {

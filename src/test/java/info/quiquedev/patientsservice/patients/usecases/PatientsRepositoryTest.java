@@ -68,7 +68,7 @@ class PatientsRepositoryTest extends WithDatabase {
   }
 
   @Test
-  void testFindByPassportNumber() {
+  void testExistsPatientByPassportNumber() {
     // given
     var patient =
         Patient.builder()
@@ -81,18 +81,18 @@ class PatientsRepositoryTest extends WithDatabase {
     repository.save(patient);
 
     // when
-    var maybePatient = repository.findByPassportNumber(patient.getPassportNumber());
+    var exists = repository.existsPatientByPassportNumber(patient.getPassportNumber());
 
     // then
-    assertThat(maybePatient).contains(patient);
+    assertThat(exists).isTrue();
   }
 
   @Test
   void testFindByPassportNumberNotFound() {
     // when
-    var maybePatient = repository.findByPassportNumber("1234");
+    var exists = repository.existsPatientByPassportNumber("1234");
 
     // then
-    assertThat(maybePatient).isEmpty();
+    assertThat(exists).isFalse();
   }
 }
