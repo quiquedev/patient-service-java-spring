@@ -40,9 +40,6 @@ class Patient {
   @Column(nullable = false)
   private Instant createdAt;
 
-  @Version
-  private int version;
-
   @Override
   public boolean equals(final Object o) {
     if (this == o) return true;

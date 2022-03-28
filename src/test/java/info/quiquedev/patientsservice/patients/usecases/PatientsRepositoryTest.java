@@ -88,7 +88,7 @@ class PatientsRepositoryTest extends WithDatabase {
   }
 
   @Test
-  void testFindByPassportNumberNotFound() {
+  void testExistsPatientByPassportNumberNotFound() {
     // when
     var exists = repository.existsPatientByPassportNumber("1234");
 
