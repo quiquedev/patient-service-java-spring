@@ -1,6 +1,7 @@
 package info.quiquedev.patientsservice.patients.usecases;
 
-import static info.quiquedev.patientsservice.patients.usecases.FixedClockConfig.FIXED_CLOCK;
+import static info.quiquedev.patientsservice.patients.FixedClockConfig.FIXED_CLOCK;
+import info.quiquedev.patientsservice.patients.WithDatabase;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import org.hibernate.exception.ConstraintViolationException;

@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 import org.springframework.http.ResponseEntity;
+import static org.springframework.http.ResponseEntity.notFound;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,14 +28,17 @@ public class PatientsController {
   private final PatientsUsecases usecases;
 
   @PostMapping
-  public @ResponseBody  PatientDto createPatient(@Validated @RequestBody NewPatientDto newPatientDto)
+  public @ResponseBody PatientDto createPatient(@Validated @RequestBody NewPatientDto newPatientDto)
       throws PassportNumberNotUniqueException {
     return usecases.createPatient(newPatientDto);
   }
 
-  @GetMapping("/id")
-  public @ResponseBody Optional<PatientDto> findPatientById(@PathVariable("id") final String id) {
-    return usecases.findPatientById(id);
+  @GetMapping("/{id}")
+  public ResponseEntity<PatientDto> findPatientById(@PathVariable("id") final String id) {
+    return usecases
+        .findPatientById(id)
+        .map(ResponseEntity::ok)
+        .orElseGet(() -> notFound().build());
   }
 
   @ExceptionHandler(PassportNumberNotUniqueException.class)

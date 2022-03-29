@@ -1,4 +1,4 @@
-package info.quiquedev.patientsservice.patients.usecases;
+package info.quiquedev.patientsservice.patients;
 
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;

@@ -1,27 +1,23 @@
 package info.quiquedev.patientsservice.patients.usecases;
 
-import static info.quiquedev.patientsservice.patients.usecases.FixedClockConfig.FIXED_CLOCK;
+import static info.quiquedev.patientsservice.patients.FixedClockConfig.FIXED_CLOCK;
 import info.quiquedev.patientsservice.patients.usecases.dtos.NewPatientDto;
 import info.quiquedev.patientsservice.patients.usecases.dtos.PatientDto;
-import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import static org.mockito.Mockito.when;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.MediaType;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.time.Instant;
+import java.util.Optional;
 
 @WebMvcTest(PatientsController.class)
 class PatientsControllerTest {
@@ -41,6 +37,34 @@ class PatientsControllerTest {
             .andExpect(jsonPath("$.surname").value(PATIENT_DTO.getSurname()))
             .andExpect(jsonPath("$.passportNumber").value(PATIENT_DTO.getPassportNumber()))
             .andExpect(jsonPath("$.createdAt").value(PATIENT_DTO.getCreatedAt().toString()));
+  }
+
+  @Test
+  public void testCreatePatientWithPassportNotUnique() throws Exception {
+    when(patientsUsecases.createPatient(NEW_PATIENT_DTO)).thenThrow(PassportNumberNotUniqueException.class);
+
+    mockMvc
+            .perform(post("/patients").content(NEW_PATIENT_JSON).contentType(APPLICATION_JSON))
+            .andExpect(status().isBadRequest());
+  }
+
+  @Test
+  public void testFindPatientById() throws Exception {
+    when(patientsUsecases.findPatientById(PATIENT_DTO.getId())).thenReturn(Optional.of(PATIENT_DTO));
+
+    mockMvc
+            .perform(get("/patients/" + PATIENT_DTO.getId()))
+            .andExpect(status().isOk())
+            .andExpect(content().json(PATIENT_JSON));
+  }
+
+  @Test
+  public void testFindPatientByIdNotFound() throws Exception {
+    when(patientsUsecases.findPatientById(PATIENT_DTO.getId())).thenReturn(Optional.empty());
+
+    mockMvc
+            .perform(get("/patients/" + PATIENT_DTO.getId()))
+            .andExpect(status().isNotFound());
   }
 
   private static final NewPatientDto NEW_PATIENT_DTO =
