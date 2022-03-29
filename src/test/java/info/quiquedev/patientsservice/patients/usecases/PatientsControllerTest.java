@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import static org.springframework.http.MediaType.APPLICATION_JSON;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -32,13 +34,13 @@ class PatientsControllerTest {
     when(patientsUsecases.createPatient(NEW_PATIENT_DTO)).thenReturn(PATIENT_DTO);
 
     mockMvc
-            .perform(post("/patients"))
+            .perform(post("/patients").content(NEW_PATIENT_JSON).contentType(APPLICATION_JSON))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.id").value(PATIENT_DTO.getId()))
             .andExpect(jsonPath("$.name").value(PATIENT_DTO.getName()))
             .andExpect(jsonPath("$.surname").value(PATIENT_DTO.getSurname()))
             .andExpect(jsonPath("$.passportNumber").value(PATIENT_DTO.getPassportNumber()))
-            .andExpect(jsonPath("$.createdAt").value(PATIENT_DTO.getCreatedAt()));
+            .andExpect(jsonPath("$.createdAt").value(PATIENT_DTO.getCreatedAt().toString()));
   }
 
   private static final NewPatientDto NEW_PATIENT_DTO =
@@ -55,6 +57,13 @@ class PatientsControllerTest {
           .passportNumber(NEW_PATIENT_DTO.getPassportNumber())
           .createdAt(Instant.now(FIXED_CLOCK))
           .build();
+  private static final String NEW_PATIENT_JSON = """
+          {
+            "name": "enrique",
+            "surname": "molina",
+            "passportNumber": "123458760X"
+          }
+          """.stripIndent();
   private static final String PATIENT_JSON = """
           {
             "id": "id",
