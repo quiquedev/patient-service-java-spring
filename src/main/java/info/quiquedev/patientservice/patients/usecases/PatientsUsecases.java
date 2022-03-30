@@ -1,7 +1,7 @@
-package info.quiquedev.patientsservice.patients.usecases;
+package info.quiquedev.patientservice.patients.usecases;
 
-import info.quiquedev.patientsservice.patients.usecases.dtos.NewPatientDto;
-import info.quiquedev.patientsservice.patients.usecases.dtos.PatientDto;
+import info.quiquedev.patientservice.patients.usecases.dtos.NewPatientDto;
+import info.quiquedev.patientservice.patients.usecases.dtos.PatientDto;
 import java.text.MessageFormat;
 import java.time.Clock;
 import java.time.Instant;

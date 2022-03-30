@@ -1,6 +1,6 @@
-package info.quiquedev.patientsservice.patients.usecases;
+package info.quiquedev.patientservice.patients.usecases;
 
-import static info.quiquedev.patientsservice.patients.usecases.FixedClockConfig.FIXED_CLOCK;
+import static info.quiquedev.patientservice.patients.usecases.FixedClockConfig.FIXED_CLOCK;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.mockito.Mockito.when;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
@@ -10,8 +10,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import info.quiquedev.patientsservice.patients.usecases.dtos.NewPatientDto;
-import info.quiquedev.patientsservice.patients.usecases.dtos.PatientDto;
+import info.quiquedev.patientservice.patients.usecases.dtos.NewPatientDto;
+import info.quiquedev.patientservice.patients.usecases.dtos.PatientDto;
 import java.time.Instant;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;

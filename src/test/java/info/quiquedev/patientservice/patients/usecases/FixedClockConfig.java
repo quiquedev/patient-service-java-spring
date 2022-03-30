@@ -1,4 +1,4 @@
-package info.quiquedev.patientsservice.patients.usecases;
+package info.quiquedev.patientservice.patients.usecases;
 
 import java.time.Clock;
 import java.time.Instant;

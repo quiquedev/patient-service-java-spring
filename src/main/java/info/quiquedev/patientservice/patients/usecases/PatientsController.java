@@ -1,4 +1,4 @@
-package info.quiquedev.patientsservice.patients.usecases;
+package info.quiquedev.patientservice.patients.usecases;
 
 import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
@@ -8,8 +8,8 @@ import static org.springframework.http.ResponseEntity.notFound;
 import static org.springframework.http.ResponseEntity.ok;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import info.quiquedev.patientsservice.patients.usecases.dtos.NewPatientDto;
-import info.quiquedev.patientsservice.patients.usecases.dtos.PatientDto;
+import info.quiquedev.patientservice.patients.usecases.dtos.NewPatientDto;
+import info.quiquedev.patientservice.patients.usecases.dtos.PatientDto;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;

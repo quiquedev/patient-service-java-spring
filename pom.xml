@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>info.quiquedev</groupId>
-    <artifactId>patients-service-java-spring</artifactId>
+    <artifactId>patient-service-java-spring</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>patients-service-java-spring</name>
-    <description>patients-service-java-spring</description>
+    <name>patient-service-java-spring</name>
+    <description>patient-service-java-spring</description>
     <properties>
         <java.version>17</java.version>
         <testcontainers.version>1.16.2</testcontainers.version>

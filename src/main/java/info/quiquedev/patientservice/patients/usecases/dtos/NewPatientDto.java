@@ -1,4 +1,4 @@
-package info.quiquedev.patientsservice.patients.usecases.dtos;
+package info.quiquedev.patientservice.patients.usecases.dtos;
 
 import lombok.Builder;
 import lombok.Data;

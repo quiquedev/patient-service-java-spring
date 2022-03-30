@@ -1,14 +1,14 @@
-package info.quiquedev.patientsservice.patients.usecases;
+package info.quiquedev.patientservice.patients.usecases;
 
-import static info.quiquedev.patientsservice.patients.usecases.FixedClockConfig.FIXED_CLOCK;
+import static info.quiquedev.patientservice.patients.usecases.FixedClockConfig.FIXED_CLOCK;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.when;
 
-import info.quiquedev.patientsservice.patients.usecases.dtos.NewPatientDto;
-import info.quiquedev.patientsservice.patients.usecases.dtos.PatientDto;
+import info.quiquedev.patientservice.patients.usecases.dtos.NewPatientDto;
+import info.quiquedev.patientservice.patients.usecases.dtos.PatientDto;
 import java.time.Instant;
 import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;

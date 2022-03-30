@@ -1,4 +1,4 @@
-package info.quiquedev.patientsservice.patients.usecases.dtos;
+package info.quiquedev.patientservice.patients.usecases.dtos;
 
 import java.time.Instant;
 import lombok.Builder;

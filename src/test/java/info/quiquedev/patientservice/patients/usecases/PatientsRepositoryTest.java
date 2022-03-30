@@ -1,6 +1,6 @@
-package info.quiquedev.patientsservice.patients.usecases;
+package info.quiquedev.patientservice.patients.usecases;
 
-import static info.quiquedev.patientsservice.patients.usecases.FixedClockConfig.FIXED_CLOCK;
+import static info.quiquedev.patientservice.patients.usecases.FixedClockConfig.FIXED_CLOCK;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 
