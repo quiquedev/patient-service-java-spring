@@ -1,1 +1,12 @@
-
+spring:
+  datasource:
+    hikari:
+      maximum-pool-size: 50
+      connection-timeout: 120000
+      idle-timeout: 300000
+      max-lifetime: 840000
+      minimum-idle: 10
+      username: ps_user
+      password: ps_password
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:postgresql://localhost:5433/patients_service

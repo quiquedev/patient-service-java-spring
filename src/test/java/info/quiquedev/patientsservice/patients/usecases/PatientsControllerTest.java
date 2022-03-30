@@ -1,6 +1,7 @@
 package info.quiquedev.patientsservice.patients.usecases;
 
 import static info.quiquedev.patientsservice.patients.usecases.FixedClockConfig.FIXED_CLOCK;
+import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.mockito.Mockito.when;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -37,6 +38,30 @@ class PatientsControllerTest {
         .andExpect(jsonPath("$.surname").value(PATIENT_DTO.getSurname()))
         .andExpect(jsonPath("$.passportNumber").value(PATIENT_DTO.getPassportNumber()))
         .andExpect(jsonPath("$.createdAt").value(PATIENT_DTO.getCreatedAt().toString()));
+  }
+
+  @Test
+  public void testCreatePatientInvalid() throws Exception {
+    var invalidDto =
+        """
+            {
+             "name": "111111111111111111111111111111111111111111111111111111111111",
+             "surname":"",
+             "passportNumber":"123"
+            }
+            """
+            .stripIndent();
+    mockMvc
+        .perform(post("/patients").content(invalidDto).contentType(APPLICATION_JSON))
+        .andExpect(status().isBadRequest())
+        .andExpect(jsonPath("$.message").value("invalid body"))
+        .andExpect(
+            jsonPath(
+                "$.errors",
+                containsInAnyOrder(
+                    "'passportNumber' length must be between 10 and 10",
+                    "'surname' length must be between 1 and 150",
+                    "'name' length must be between 1 and 50")));
   }
 
   @Test
