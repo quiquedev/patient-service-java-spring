@@ -1,4 +1,4 @@
-package info.quiquedev.patientsservice.patients;
+package info.quiquedev.patientsservice.patients.usecases;
 
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
@@ -7,7 +7,7 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
 @Testcontainers
-public class WithDatabase {
+class WithDatabase {
   @Container
   static PostgreSQLContainer<?> dbContainer =
       new PostgreSQLContainer<>("postgres:12")

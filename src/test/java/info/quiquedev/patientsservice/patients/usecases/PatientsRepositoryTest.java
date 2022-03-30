@@ -1,16 +1,15 @@
 package info.quiquedev.patientsservice.patients.usecases;
 
-import static info.quiquedev.patientsservice.patients.FixedClockConfig.FIXED_CLOCK;
-import info.quiquedev.patientsservice.patients.WithDatabase;
+import static info.quiquedev.patientsservice.patients.usecases.FixedClockConfig.FIXED_CLOCK;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
+
+import java.time.Instant;
 import org.hibernate.exception.ConstraintViolationException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.time.Instant;
 
 @SpringBootTest
 class PatientsRepositoryTest extends WithDatabase {

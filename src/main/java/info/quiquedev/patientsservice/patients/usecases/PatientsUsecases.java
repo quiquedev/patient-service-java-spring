@@ -2,13 +2,12 @@ package info.quiquedev.patientsservice.patients.usecases;
 
 import info.quiquedev.patientsservice.patients.usecases.dtos.NewPatientDto;
 import info.quiquedev.patientsservice.patients.usecases.dtos.PatientDto;
-import lombok.RequiredArgsConstructor;
-
 import java.text.MessageFormat;
 import java.time.Clock;
 import java.time.Instant;
 import java.util.Optional;
 import java.util.UUID;
+import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 class PatientsUsecases {

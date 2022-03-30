@@ -1,18 +1,18 @@
 package info.quiquedev.patientsservice.patients.usecases;
 
-import static info.quiquedev.patientsservice.patients.FixedClockConfig.FIXED_CLOCK;
-import info.quiquedev.patientsservice.patients.usecases.dtos.NewPatientDto;
-import info.quiquedev.patientsservice.patients.usecases.dtos.PatientDto;
+import static info.quiquedev.patientsservice.patients.usecases.FixedClockConfig.FIXED_CLOCK;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.when;
 
+import info.quiquedev.patientsservice.patients.usecases.dtos.NewPatientDto;
+import info.quiquedev.patientsservice.patients.usecases.dtos.PatientDto;
 import java.time.Instant;
 import java.util.Optional;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class PatientsUsecasesTest {
   final PatientsRepository repository = mock(PatientsRepository.class);
@@ -50,8 +50,7 @@ public class PatientsUsecasesTest {
 
   public void testFindPatientById() {
     // given
-    when(repository.findById(PATIENT.getId()))
-            .thenReturn(Optional.of(PATIENT));
+    when(repository.findById(PATIENT.getId())).thenReturn(Optional.of(PATIENT));
 
     // when
     var patient = usecases.findPatientById(PATIENT.getId());
@@ -62,8 +61,7 @@ public class PatientsUsecasesTest {
 
   public void testFindPatientByIdIfNotFound() {
     // given
-    when(repository.findById(PATIENT.getId()))
-            .thenReturn(Optional.empty());
+    when(repository.findById(PATIENT.getId())).thenReturn(Optional.empty());
 
     // when
     var patient = usecases.findPatientById(PATIENT.getId());

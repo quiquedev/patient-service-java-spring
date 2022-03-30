@@ -1,18 +1,16 @@
 package info.quiquedev.patientsservice.patients.usecases;
 
+import java.time.Instant;
+import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Version;
-import java.time.Instant;
-import java.util.Objects;
 
 interface PatientsRepository extends JpaRepository<Patient, String> {
   boolean existsPatientByPassportNumber(String passportNumber);
@@ -25,8 +23,7 @@ interface PatientsRepository extends JpaRepository<Patient, String> {
 @Builder
 @Getter
 class Patient {
-  @Id
-  private String id;
+  @Id private String id;
 
   @Column(nullable = false)
   private String name;
@@ -46,9 +43,9 @@ class Patient {
     if (o == null || getClass() != o.getClass()) return false;
     final Patient patient = (Patient) o;
     return Objects.equals(name, patient.name)
-            && Objects.equals(surname, patient.surname)
-            && Objects.equals(passportNumber, patient.passportNumber)
-            && Objects.equals(createdAt, patient.createdAt);
+        && Objects.equals(surname, patient.surname)
+        && Objects.equals(passportNumber, patient.passportNumber)
+        && Objects.equals(createdAt, patient.createdAt);
   }
 
   @Override
@@ -56,4 +53,3 @@ class Patient {
     return Objects.hash(name, surname, passportNumber, createdAt);
   }
 }
-

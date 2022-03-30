@@ -1,11 +1,9 @@
 package info.quiquedev.patientsservice;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.time.Clock;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-
-import java.time.Clock;
 
 @SpringBootApplication
 public class PatientsServiceApplication {

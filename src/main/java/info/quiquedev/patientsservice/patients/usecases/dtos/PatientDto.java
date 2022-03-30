@@ -1,11 +1,8 @@
 package info.quiquedev.patientsservice.patients.usecases.dtos;
 
+import java.time.Instant;
 import lombok.Builder;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
-import org.hibernate.validator.constraints.Length;
-
-import java.time.Instant;
 
 @Data
 @Builder
