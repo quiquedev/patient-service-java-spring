@@ -67,11 +67,12 @@ class PatientsControllerTest {
   @Test
   public void testCreatePatientWithPassportNotUnique() throws Exception {
     when(patientsUsecases.createPatient(NEW_PATIENT_DTO))
-        .thenThrow(PassportNumberNotUniqueException.class);
+        .thenThrow(new PassportNumberNotUniqueException(NEW_PATIENT_DTO.getPassportNumber()));
 
     mockMvc
         .perform(post("/patients").content(NEW_PATIENT_JSON).contentType(APPLICATION_JSON))
-        .andExpect(status().isBadRequest());
+        .andExpect(status().isBadRequest())
+        .andExpect(jsonPath("$.message").value("passport number '123458760X' non unique"));
   }
 
   @Test

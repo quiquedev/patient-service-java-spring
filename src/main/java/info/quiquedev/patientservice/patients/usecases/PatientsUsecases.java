@@ -2,7 +2,6 @@ package info.quiquedev.patientservice.patients.usecases;
 
 import info.quiquedev.patientservice.patients.usecases.dtos.NewPatientDto;
 import info.quiquedev.patientservice.patients.usecases.dtos.PatientDto;
-import java.text.MessageFormat;
 import java.time.Clock;
 import java.time.Instant;
 import java.util.Optional;
@@ -48,6 +47,6 @@ class PatientsUsecases {
 
 class PassportNumberNotUniqueException extends Exception {
   PassportNumberNotUniqueException(final String passportNumber) {
-    super(MessageFormat.format("passport number {0} non unique", passportNumber));
+    super("passport number '" + passportNumber + "' non unique");
   }
 }
